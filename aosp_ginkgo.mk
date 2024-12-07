@@ -32,6 +32,7 @@ $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 # Device config
 TARGET_BOOT_ANIMATION_RES := 1080
+PRODUCT_NO_CAMERA := false
 
 # Device identifier
 PRODUCT_NAME := aosp_ginkgo
