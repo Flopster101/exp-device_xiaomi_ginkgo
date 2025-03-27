@@ -20,30 +20,33 @@
 # Inherit framework first
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
+
+# OMX
+TARGET_SUPPORTS_OMX_SERVICE := false
 
 # Inherit from ginkgo device
 $(call inherit-product, device/xiaomi/ginkgo/device.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# Inherit some common ClownUI stuff
+# Inherit some common EvoX stuff
+# EVO_BUILD_TYPE := Official
 TARGET_BOOT_ANIMATION_RES := 1080
-CLOWN_BUILD_TYPE := OFFICIAL
-CLOWN_MAINTAINER := Ryuzenn
-WITH_GMS := true
-TARGET_USES_MINI_GAPPS := true
+TARGET_BUILD_APERTURE_CAMERA := false
+TARGET_HAS_UDFPS := true
+TARGET_SUPPORTS_QUICK_TAP := false
 
-#GMS Settings
-TARGET_INCLUDE_STOCK_ARCORE := true
-TARGET_SUPPORTS_QUICK_TAP := true
-TARGET_SUPPORTS_GOOGLE_RECORDER := true
-TARGET_INCLUDE_LIVE_WALLPAPERS := true
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2340
+TARGET_SCREEN_WIDTH := 1080
 
 # Device identifier
-PRODUCT_NAME := clown_ginkgo
+PRODUCT_NAME := lineage_ginkgo
 PRODUCT_DEVICE := ginkgo
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi Note 8/8T
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+# Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
+BUILD_FINGERPRINT := Xiaomi/raphael/raphael:11/RKQ1.200826.002/V12.5.2.0.RFKMIXM:user/release-keys
